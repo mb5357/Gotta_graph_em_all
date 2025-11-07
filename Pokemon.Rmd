@@ -1,5 +1,6 @@
 ---
 title: "Pokemon"
+author: "Team Pokemon"
 output: github_document
     
 ---
@@ -27,3 +28,7 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 ```
 
+## Group Members
+Sergio Ozoria Ramirez (smo2147), Maria Beg (mb5357), Eman Ibrahim (ei2291)
+
+## Title

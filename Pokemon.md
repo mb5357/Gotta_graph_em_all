@@ -1,3 +1,10 @@
 Pokemon
 ================
+Team Pokemon
 
+## Group Members
+
+Sergio Ozoria Ramirez (smo2147), Maria Beg (mb5357), Eman Ibrahim
+(ei2291)
+
+## Title
