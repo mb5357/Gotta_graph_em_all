@@ -40,7 +40,7 @@ Our project focuses on understanding the relationship between Pokémon character
 - Identify which Pokémon types are strongest and weakest overall by comparing their average stat values. 
 - Visualize the distribution of stats across Pokémon generations using boxplots, linear regression, and heatmaps.
 - See what factors (type, stats, generation) predict whether a Pokémon is legendary.
-- Create interactive graphs using ggplot2, plotly, and dplyr for data manipulation and visualization. 
+- Create interactive graphs using `ggplot2`, `plotly`, and `dplyr` for data manipulation and visualization. 
 
 ## Planned timeline
 * Nov 7 → Draft final data report proposal, including deliverables and data analysis plan

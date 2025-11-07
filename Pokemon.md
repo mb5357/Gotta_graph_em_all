@@ -66,8 +66,8 @@ characteristics and performance. We plan to:
   boxplots, linear regression, and heatmaps.
 - See what factors (type, stats, generation) predict whether a Pokémon
   is legendary.
-- Create interactive graphs using ggplot2, plotly, and dplyr for data
-  manipulation and visualization.
+- Create interactive graphs using `ggplot2`, `plotly`, and `dplyr` for
+  data manipulation and visualization.
 
 ## Planned timeline
 
