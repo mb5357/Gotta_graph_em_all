@@ -30,12 +30,15 @@ the average Pokémon player.
 
 We aim to produce a comprehensive analytical report that incorporates
 interactive visualizations through a GitHub webpage. The report will
-include the following deliverables: \* Interactive charts exploring the
-relationship between stats, types, and Pokémon characteristics such as
-height and weight \* An effectiveness and resistance matrix for Pokémon
-types \* Top Pokémon performers across different stat categories, such
-as HP, Attack, Defense, Special Defense, and Speed \* Build your own
-Pokémon team \* Will perform a screencast presenting these findings
+include the following deliverables:
+
+- Interactive charts exploring the relationship between stats, types,
+  and Pokémon characteristics such as height and weight
+- An effectiveness and resistance matrix for Pokémon types
+- Top Pokémon performers across different stat categories, such as HP,
+  Attack, Defense, Special Defense, and Speed
+- Build your own Pokémon team
+- Will perform a screencast presenting these findings
 
 ## Data Sources
 
@@ -44,23 +47,27 @@ information on 802 Pokémon from all seven generations. The dataset has
 details on type, stats, height, weight, classification, experience
 growth, and more.
 
-Primary Dataset:
-<https://www.kaggle.com/datasets/rounakbanik/pokemon?resource=download>
+- Primary Dataset:
+  <https://www.kaggle.com/datasets/rounakbanik/pokemon?resource=download>
 
-Inspirations: <https://pokemondb.net/type>,
-<https://pokemondb.net/type/dual>, <https://pokemondb.net/pokebase>
+- Inspirations: <https://pokemondb.net/type>,
+  <https://pokemondb.net/type/dual>, <https://pokemondb.net/pokebase>
 
 ## Planned Analyses/Visualizations/Coding Challenges
 
 Our project focuses on understanding the relationship between Pokémon
-characteristics and performance. We plan to: \* See how physical traits
-(height and weight) relate to base stats like Attack, Defense, and
-Speed. \* Identify which Pokémon types are strongest and weakest overall
-by comparing their average stat values. \* Visualize the distribution of
-stats across Pokémon generations using boxplots, linear regression, and
-heatmaps. \* See what factors (type, stats, generation) predict whether
-a Pokémon is legendary. \* Create interactive graphs using ggplot2,
-plotly, and dplyr for data manipulation and visualization.
+characteristics and performance. We plan to:
+
+- See how physical traits (height and weight) relate to base stats like
+  Attack, Defense, and Speed.
+- Identify which Pokémon types are strongest and weakest overall by
+  comparing their average stat values.
+- Visualize the distribution of stats across Pokémon generations using
+  boxplots, linear regression, and heatmaps.
+- See what factors (type, stats, generation) predict whether a Pokémon
+  is legendary.
+- Create interactive graphs using ggplot2, plotly, and dplyr for data
+  manipulation and visualization.
 
 ## Planned timeline
 
