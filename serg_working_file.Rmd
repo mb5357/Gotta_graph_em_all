@@ -4,3 +4,47 @@ author: "Sergio Ozoria"
 date: "2025-11-26"
 output: github_document
 ---
+
+# 1. Preparing variables
+
+```{r loading package}
+library(tidyverse)
+```
+
+
+```{r}
+#  serg - cleaning up name using snake format + concatenating missing values 
+poke_tidy = read_csv("./Data/pokemon.csv", na = c("NA", ".", "")) |> 
+  janitor::clean_names()
+
+# serg - replacing missing type 2 with none
+poke_tidy = poke_tidy |> 
+  mutate(
+    type2 = ifelse(is.na(type2), "None", type2),
+    type1 = str_to_title(type1),
+    type2 = str_to_title(type2)
+  ) |> 
+  distinct(name, .keep_all = TRUE)
+
+# serg - categorical var for plotting/modeling
+poke_tidy = poke_tidy |> 
+  mutate(
+    type1 = as.factor(type1),
+    type2 = as.factor(type2),
+    generation = as.factor(generation),
+    is_legendary = as.logical(is_legendary)
+  )
+
+# serg - cleaning up abilities (could also create variables for each)
+poke_tidy = poke_tidy |> 
+  mutate(
+    abilities = str_remove_all(abilities, "\\[|\\]|'")
+  )
+
+# serg - in case there's missing gender 
+poke_tidy = poke_tidy |> 
+  mutate(
+    genderless = ifelse(is.na(percentage_male), TRUE, FALSE)
+  )
+```
+
