@@ -1,4 +1,3 @@
----
 title: "Gotta Graph 'Em All"
 description: "Visualizing Pokémon data — stats, types, evolutions, and more."
 theme: minima
@@ -16,4 +15,3 @@ exclude:
   - README.md
   - node_modules
   - vendor
----
