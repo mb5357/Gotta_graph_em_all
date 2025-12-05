@@ -191,6 +191,15 @@ ggplot(poke_tidy, aes(base_total))+
 ```
 
 <img src="serg_working_file_files/figure-gfm/unnamed-chunk-4-1.png" width="90%" />
+\## Ditstribution of Total Stats
+
+We first looked at the overall strength of all Pokemon by plotting the
+`base_total`. This helps us understand how strong mose pokemon are. The
+histogram shows that mnay pokemon fall in the middle range (from 300-550
+total stats). Only a few Pokemon have very high stats (above 650), which
+makes sense because very strong Pokemon are rare. From this plot, we can
+see that the dataset includes both weak and strong Pokremon, and it’s a
+good starting point before we compare groups or run hypothesis tests.
 
 ``` r
 # eman - average total stats by type
@@ -202,6 +211,17 @@ ggplot(poke_tidy, aes(type1, base_total))+
 ```
 
 <img src="serg_working_file_files/figure-gfm/unnamed-chunk-5-1.png" width="90%" />
+
+## Total Stats by Primary Type
+
+We compared total stats across different Pokemon types to see if some
+types are usually stronger than others. The boxplot shows clear
+differences. Types like Dragon, Steel, and Psychic tend to have higher
+total stats. On the other hand, Bug, Normal, and Poison types usually
+have lower stats. Even though the ranges overlap, the medians are
+different enough to show that type does matter.This supports our later
+statistical test (ANOVA), which also found significant differences
+across types.
 
 ``` r
 #eman - height vs weight colored by strength
@@ -216,6 +236,8 @@ ggplot(poke_tidy, aes(height_m, weight_kg, color = base_total))+
     ## (`geom_point()`).
 
 <img src="serg_working_file_files/figure-gfm/unnamed-chunk-6-1.png" width="90%" />
+
+## Height vs. Weight Colored by Total Stats
 
 ``` r
 # eman - hypothesis testing
