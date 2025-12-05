@@ -169,8 +169,11 @@ poke_tidy$predicted_legendary =
 
 ```
 
+## Logistiv Regression: Predicting Legendary Pokemon
 
-
+We ran a logistic regression to see whether we could predict if a Pokemon is legendary based on its total stats, type, and generation. This model helps us understand which characteristics are most strongly linked with legendary status. The results show that `base_total` is the strongest and most important predictor. As total stats increase, the probability of being legendary also increases. This makes sense, because legendary Pokemon are designed to be much stronger than regular Pokemon. 
+Most of the type variables were not significant, meaning that a Pokemon's type does not strongly determine whether it is legendary after we account for total stats. A few generations showed small effects, but these were not as strong as the effect of base_total. 
+Overall, the model supports what we expected: Stronger Pokemon are far more likely to be legendary, and total stats explain more of this difference.
 
 ```{r}
 #eman - saving clean dataset
