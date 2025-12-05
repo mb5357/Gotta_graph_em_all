@@ -251,6 +251,7 @@ Type-specific accuracy varied substantially. The easiest types to predict were N
 
 From a gameplay perspective, base stats provide useful but incomplete information about type identity. Players should consider both stat distributions and type matchups when building balanced teams.
 
+## Capture Rate vs Performance Analysis
 
 ```{r capture rate & performance, warning = FALSE, message = FALSE}
 # Serg - Hypothesis testing using linear regression
@@ -306,7 +307,7 @@ tbl_regression(
   modify_header(label = "**Predictors**")
 ```
 
-## Capture Rate vs Performance Analysis
+#### Hypotheses
 
 As Pokémon data nerds, we were interested in examining whether a Pokemon's capture rate is related to its overall combat potential, which is relevant information for casual Pokémon players and competitive trainers. Thus, we examined whether Pokémon that are harder to catch tend to have higher base stat totals. 
 
@@ -339,6 +340,8 @@ Altogether, these covariates are meant to adjust for any potential differences a
 Among all non-legendary Pokémon included our cross-generational dataset of the Pokémon universe, we observed a significant negative association between `capture_rate` and `base_total`. More specifically, for every one-unit increase in `capture_rate`, meaning easier to catch, `base_total` decreased by about 0.87 points **(β = −0.87, 95% CI: −0.96, −0.79; p < 0.001)**. These results suggest that species designed to be harder to catch tend to possess higher combat power than those who are easier to catch.
 
 At the 5% significance level, the association between `capture_rate` and `base_total` is statistically significant, after adjusting for `height_m`, `weight_kg`, `percentage_male`, and `generation`. Therefore, we reject the null hypothesis that there is no linear relationship between the exposure and outcome of interest. 
+
+## A Two-Sample T-Test of Dual-Type vs Single-Type Pokémons
 
 ```{r dual and single type t-test, message = FALSE}
 
@@ -375,7 +378,7 @@ ggplot(poke_2tt, aes(x = dual_type, y = base_total, fill = dual_type)) +
   )
 ```
 
-## A Two-Sample T-Test of Dual-Type vs Single-Type Pokémons
+#### Hypotheses
 
 We next examined whether dual-type Pokémon have a statistical advantage over single type Pokémon in terms of overall combat strengthe. More specifically, we wanted to test whether the total base stats differ between single_type and dual-type Pokémons. 
 

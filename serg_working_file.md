@@ -378,6 +378,8 @@ From a gameplay perspective, base stats provide useful but incomplete
 information about type identity. Players should consider both stat
 distributions and type matchups when building balanced teams.
 
+## Capture Rate vs Performance Analysis
+
 ``` r
 # Serg - Hypothesis testing using linear regression
   # RQ: Is there a relationship between capture rate and overall combat effectiveness?
@@ -905,7 +907,7 @@ tbl_regression(
 </table>
 </div>
 
-## Capture Rate vs Performance Analysis
+#### Hypotheses
 
 As Pokémon data nerds, we were interested in examining whether a
 Pokemon’s capture rate is related to its overall combat potential, which
@@ -991,6 +993,8 @@ At the 5% significance level, the association between `capture_rate` and
 we reject the null hypothesis that there is no linear relationship
 between the exposure and outcome of interest.
 
+## A Two-Sample T-Test of Dual-Type vs Single-Type Pokémons
+
 ``` r
 # serg - running two sample t test to explore whether dual-type pokemon have statistical advantages over single-type ones
 poke_2tt = poke_tidy |> 
@@ -1049,7 +1053,7 @@ ggplot(poke_2tt, aes(x = dual_type, y = base_total, fill = dual_type)) +
 
 <img src="serg_working_file_files/figure-gfm/dual and single type t-test-1.png" width="90%" />
 
-## A Two-Sample T-Test of Dual-Type vs Single-Type Pokémons
+#### Hypotheses
 
 We next examined whether dual-type Pokémon have a statistical advantage
 over single type Pokémon in terms of overall combat strengthe. More
