@@ -95,6 +95,7 @@ ggplot(poke_tidy, aes(base_total))+
   geom_histogram(bins = 30, fill = "skyblue", color = "black")+
   labs(title = "Distribution of Total Stats")
 ```
+
 ## Ditstribution of Total Stats
 
 We first looked at the overall strength of all Pokemon by plotting the `base_total`. This helps us understand how strong mose pokemon are. The histogram shows that mnay pokemon fall in the middle range (from 300-550 total stats). Only a few Pokemon have very high stats (above 650), which makes sense because very strong Pokemon are rare. From this plot, we can see that the dataset includes both weak and strong Pokremon, and it's a good starting point before we compare groups or run hypothesis tests.
@@ -169,7 +170,7 @@ poke_tidy$predicted_legendary =
 
 ```
 
-## Logistiv Regression: Predicting Legendary Pokemon
+## Logistic Regression: Predicting Legendary Pokemon
 
 We ran a logistic regression to see whether we could predict if a Pokemon is legendary based on its total stats, type, and generation. This model helps us understand which characteristics are most strongly linked with legendary status. The results show that `base_total` is the strongest and most important predictor. As total stats increase, the probability of being legendary also increases. This makes sense, because legendary Pokemon are designed to be much stronger than regular Pokemon. 
 Most of the type variables were not significant, meaning that a Pokemon's type does not strongly determine whether it is legendary after we account for total stats. A few generations showed small effects, but these were not as strong as the effect of base_total. 

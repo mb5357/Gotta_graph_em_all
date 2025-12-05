@@ -120,7 +120,8 @@ ggplot(poke_tidy, aes(base_total))+
 ```
 
 <img src="serg_working_file_files/figure-gfm/unnamed-chunk-3-1.png" width="90%" />
-\## Ditstribution of Total Stats
+
+## Ditstribution of Total Stats
 
 We first looked at the overall strength of all Pokemon by plotting the
 `base_total`. This helps us understand how strong mose pokemon are. The
@@ -289,7 +290,7 @@ poke_tidy$predicted_legendary =
   predict(legend_model, type = "response")
 ```
 
-## Logistiv Regression: Predicting Legendary Pokemon
+## Logistic Regression: Predicting Legendary Pokemon
 
 We ran a logistic regression to see whether we could predict if a
 Pokemon is legendary based on its total stats, type, and generation.
