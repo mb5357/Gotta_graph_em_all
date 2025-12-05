@@ -284,6 +284,17 @@ t.test(base_total ~ is_legendary, data = poke_tidy)
     ## mean in group FALSE  mean in group TRUE 
     ##            410.4815            615.2571
 
+## Compating Strength Across Types and Legendary Status
+
+We then ran two hypothesis tests to compare Pokemon strength across
+groups. First, the ANOVA showed that average total stats are different
+across Pokemon types (p\<0.001). This matches what we saw in the
+boxplot, where some types clearly looked stronger than others. Second,
+the t-test comparing legedary vs. non-legendary Pokemon showed that
+legendary Pokemon have much higher total stats. The difference was very
+significant. These results tell us that both Pokemon type and legendary
+status are strongly related to how strong a Pokemon is.
+
 ``` r
 # eman - logistic regression (predicting legendary)
 
