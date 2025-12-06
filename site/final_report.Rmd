@@ -247,8 +247,21 @@ The model explained about 56% of the variance in base stats (R^2 = 0.56), meanin
 
 Given these results, we reject the null hypothesis and conclude that harder to catch Pokemon tend to be stronger, consistent with gameplay expectations.
 
-
 ## Discussion
+
+Our findings across all three research questions demonstrate distinct and consistent patterns withing the Pokemon universe that align with both player intuition and formal statistical evidence.
+
+First, we discovered that Pokemon types show significant variations in their statistical distributions. The Random Forest model predicted type about four times better than chance, even though it couldn't perfectly separate them. This suggests that Pokemon types follow certain design patterns, especially when it comes to offensive stats like Special Attack and Attack. This means that stats hold useful information about type identity, which could help players guess battle strengths even if they don't know the type directly. 
+
+Second, we saw that dual-type Pokemon have a big edge over single-type Pokemon when it comes to their total base stats. Both groups have a lot of strengths, but dual-types always have higher averages. This could be because the game designers wanted it that way. Dual typing gives you more strategic options (extra resistance and STAB coverage) and slightly higher stat budgets. These findings highlight the perception that dual-type Pokemon are more versatile and stronger in combat.
+
+Third, our regression analysis showed that Pokemon that are harder to catch tend to have higher total base stats, even after controlling for physical size, sex distribution, and generation. This is very similar to what happens in the game: rare species are usually made to be stronger. Height and weight were also positively correlated with base stats, supporting the notion that larger Pokemon tend to be more powerful. We verified that the inverse correlation between capture rate and combat strength is not merely attributable to variations in size or generation. 
+
+In summary, our results show that Pokemon designs follow certain patterns. Strength is based on more than just typing and whether a Pokemon has one or two types. It also depends on how hard or rate it is to get. These results help explain many things long-time players have noticed, and they do so with clear statistical evidence. From a gameplay point-of-view, these insights can help with team building, strategic planning, and understanding the competition. 
+
+Lastly, our analyses provide strong evidence for these connections, but there are some limitations: some types were underrepresented, making it harder to predict how well they would perform; the dataset also doesn't include battle context variables, like movesets, abilities in action, and held items, that affect the outcome of real fights. Even with these limitations, our study shows how statistical modeling and machine learning can uncover important patterns and "hidden rules" in Pokemon design. 
 
 ## References
 
+* Banik, R. (2018). Complete Pokémon Dataset. Kaggle.
+https://www.kaggle.com/datasets/rounakbanik/pokemon
