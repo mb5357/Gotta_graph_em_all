@@ -1,6 +1,8 @@
 ---
 title: "About our Trainers"
-output: html_document
+output:
+  html_document:
+    toc: false
 ---
 
 ```{r setup, include=FALSE}
@@ -20,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 .trainer-card.trainer-card--horiz {
   display: grid;
-  grid-template-columns: minmax(320px, 42%) 1fr; /* large image column on the left */
+  grid-template-columns: minmax(520px, 42%) 1fr; /* large image column on the left */
   align-items: start;
   gap: 22px;
   border: 1px solid #e6e6e6;
