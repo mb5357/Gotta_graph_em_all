@@ -208,8 +208,9 @@ Before formal modeling, we conducted exploratory data analysis to guide decision
 
 - Legendary Pokémon had clearly elevated base stat totals and distinct capture mechanics, reinforcing the decision to exclude them from the capture-rate regression to avoid distorting linear trends.
 
+## Results (Summary)
+
 ## Discussion
-In our overall data analysis, we tested a few hypotheses to explore 
 
 ## References
 
