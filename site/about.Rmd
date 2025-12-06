@@ -66,10 +66,10 @@ trainers <- data.frame(
   ),
   github = c("sergozoria", "mb5357", "ei2291", "spencerriddell"),
   avatar = c(
-    "~/site/assets/images/serg team.png",          
-    "https://github.com/mb5357.png?size=720",
-    "https://github.com/ei2291.png?size=720",
-    "~/site/assets/images/spence team.png"        
+    "/assets/images/serg_team.png",          
+    "/assets/images/maria_team.png",
+    "/assets/images/eman_team.png",
+    "/assets/images/spence_team.png"        
   ),
   bio = c(
     paste0(
