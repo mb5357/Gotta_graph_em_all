@@ -15,49 +15,50 @@ Our primary goal is to explore relationships between Pokémon characteristics (t
 ## Research Questions
 
 Our project addresses three distinct research questions, each requiring different statistical approaches:
-**Research Question 1: Type Classification from Stats**
 
-*Question:* Can we predict a Pokémon's primary type based solely on its base stat distribution?
+**Research Question 1 (Type Classification from Stats):**
+
+* Can we predict a Pokémon's primary type based solely on its base stat distribution?
 
 *Hypotheses:*
 
-H₀: Pokémon stat distributions do not differ significantly across primary types; we cannot predict type from stats better than random chance
-H₁: Pokémon stat distributions vary systematically by primary type (e.g., Fire types have higher Attack, Psychic types have higher Special Attack)
+* H₀: Pokémon stat distributions do not differ significantly across primary types; we cannot predict type from stats better than random chance
+* H₁: Pokémon stat distributions vary systematically by primary type (e.g., Fire types have higher Attack, Psychic types have higher Special Attack)
 
 *Motivation:* If types have distinctive stat signatures, this reveals fundamental design principles in the Pokémon universe and helps players identify type weaknesses based on stat patterns. This question evolved from initial exploratory boxplots showing type differences—we formalized it into a classification problem to quantify predictability.
 
-**Research Question 2: Dual-Type Advantage**
+**Research Question 2 (Dual-Type Advantage):**
 
-*Question:* Do dual-type Pokémon have higher total base stats than single-type Pokémon?
+* Do dual-type Pokémon have higher total base stats than single-type Pokémon?
 
 *Hypotheses:*
 
-H₀: There is no difference in mean `base_total` between single-type and dual-type Pokémon (μ_single = μ_dual)
-H₁: There is a difference in mean `base_total` between single-type and dual-type Pokémon (μ_single ≠ μ_dual)
+* H₀: There is no difference in mean `base_total` between single-type and dual-type Pokémon (μ_single = μ_dual)
+* H₁: There is a difference in mean `base_total` between single-type and dual-type Pokémon (μ_single ≠ μ_dual)
 
 *Motivation:* Dual typing provides strategic advantages (more resistances, more STAB move coverage), but does this come with a stat penalty for game balance? Or do dual-types receive stat boosts to compensate for added complexity? This question emerged after observing apparent distribution shifts in exploratory density plots.
 
-**Research Question 3: Capture Rate and Combat Effectiveness**
+**Research Question 3 (Capture Rate and Combat Effectiveness):**
 
-*Question:* Is there a relationship between how difficult a Pokémon is to catch (capture rate) and its overall combat strength (base stats)?
+* Is there a relationship between how difficult a Pokémon is to catch (capture rate) and its overall combat strength (base stats)?
 
 *Hypotheses:*
 
-H₀: There is no linear relationship between `capture_rate` and `base_total` in non-legendary Pokémon, after controlling for physical characteristics and generation
-H₁: There is a significant negative relationship between ``capture_rate` and `base_total` (harder-to-catch Pokémon tend to be stronger), after controlling for covariates
+* H₀: There is no linear relationship between `capture_rate` and `base_total` in non-legendary Pokémon, after controlling for physical characteristics and generation
+* H₁: There is a significant negative relationship between ``capture_rate` and `base_total` (harder-to-catch Pokémon tend to be stronger), after controlling for covariates
 
 *Motivation:* Players intuitively assume rare Pokémon are stronger, but this had never been tested with proper controls for confounding variables like physical size (which might affect both catchability and stats) and generation (which might reflect evolving design philosophies). We refined this from a simple correlation to multiple regression after recognizing potential confounders.
 
 ## Data
 
-We used the **Complete Pokémon Dataset** from Kaggle (https://www.kaggle.com/datasets/rounakbanik/pokemon), containing comprehensive information on **802 Pokémon** from Generations 1-7. This dataset includes 41 variables covering base stats, types, physical characteristics, battle mechanics, and metadata.
+We used the **Complete Pokémon Dataset** from **[Kaggle](https://www.kaggle.com/datasets/rounakbanik/pokemon)**, containing comprehensive information on **801 Pokémon** from Generations 1-7. This dataset includes 41 variables covering base stats, types, physical characteristics, battle mechanics, and metadata.
 
 **Key variables used:**
 
-- Combat stats: `hp`, `attack`, `defense`, `sp_attack`, `sp_defense`, `speed`, `base_total` (sum of six base stats)
-- Type information: `type1` (primary type, 18 categories), `type2` (secondary type or "None")
-- Physical traits: `height_m`, `weight_kg`
-- Rarity & metadata: `capture_rate` (3-255; higher = easier), `generation` (1-7), `is_legendary`, `percentage_male`
+- *Combat stats:* `hp`, `attack`, `defense`, `sp_attack`, `sp_defense`, `speed`, `base_total` (sum of six base stats)
+- *Type information:* `type1` (primary type, 18 categories), `type2` (secondary type or "None")
+- *Physical traits:* `height_m`, `weight_kg`
+- *Rarity & metadata:* `capture_rate` (3-255; higher = easier), `generation` (1-7), `is_legendary`, `percentage_male`
 
 **Data Cleaning Process**
 
@@ -111,6 +112,7 @@ Restricted to observations with non-missing `capture_rate`, `base_total`, `heigh
 We employed three distinct statistical approaches to address our research questions: machine learning classification (Random Forest), parametric hypothesis testing (two-sample t-test), and multivariable regression. All analyses were conducted in R using `tidyverse`, `randomForest`, `caret` and `gtsummary ` packages.
 
 **Research Question 1: Type Prediction (Random Forest Classification)**
+
 *Rationale:* With 18 type categories and potential non-linear relationships between stats and types, Random Forest is ideal for multi-class classification while providing interpretable feature importance metrics.
 
 *Sample:* All Pokémon with complete data on the six base stats and primary type were eligible; an 80/20 stratified split ensured similar type distributions in training and test sets.
@@ -134,6 +136,7 @@ Six base stats (`hp`, `attack`, `defense`, `sp_attack`, `sp_defense`, `speed`)
 - Type-specific accuracy: Per-type accuracy computed from the confusion matrix, used to identify which types are easiest or hardest to predict.
 
 **Research Question 2: Dual-Type Advantage (Two-Sample t-test)**
+
 *Rationale:* Comparing mean total stats between two independent groups (single-type vs. dual-type) with a continuous outcome is a standard application of the two-sample t-test
 
 *Sample:* All Pokémon with non-missing `base_total` and type information. Group sizes correspond to the counts of species with and without a secondary type (`type2` equal to `"None"` vs. any other value).
@@ -156,6 +159,7 @@ Welch’s two-sample t-test, which does not assume equal variances between group
 - Effect Size: Mean difference in `base_total` between dual-type and single-type Pokémon, with a 95% confidence interval to quantify magnitude and uncertainty.
 
 **Research Question 3: Capture Rate Regression (Multiple Linear Regression)**
+
 *Rationale:* Multiple linear regression allows assessment of the association between capture rate and total base stats while controlling for covariates that may confound this relationship.
 
 *Sample:* Non-legendary Pokémon with complete data on `capture_rate`, `base_total`, `height_m`, `weight_kg`, `percentage_male`, and `generation` (recoded as Early vs Modern).
@@ -204,12 +208,8 @@ Before formal modeling, we conducted exploratory data analysis to guide decision
 
 - Legendary Pokémon had clearly elevated base stat totals and distinct capture mechanics, reinforcing the decision to exclude them from the capture-rate regression to avoid distorting linear trends.
 
-
-## Results (summary)
-
-
 ## Discussion
-
+In our overall data analysis, we tested a few hypotheses to explore 
 
 ## References
 
