@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)  # important: no results='asis'
 
 ```{r trainers}
 trainers <- data.frame(
-  name   = c("Sergio Ozoria Ramírez (smo2147)", "Maria Beg", "Eman Ibrahim", "Spencer Riddell"),
+  name   = c("Sergio Ozoria Ramírez (smo2147)", "Maria Beg", "Eman Ibrahim (ei2291)", "Spencer Riddell"),
   github = c("sergozoria",               "mb5357",    "ei2291",       "swr2118"),
   avatar = c(
     "https://github.com/sergozoria.png?size=360",
@@ -32,10 +32,23 @@ trainers <- data.frame(
       
       "<strong>Overall Goal:</strong> He wants to become a field researcher to document the diverse Pokémon ecosystem across the Sinnoh region and to uncover the secrets of the region’s legendary Pokémon, including Darkrai, Regigigas, and Heatran.<br><br>",
       
-      "<strong>Contributions:</strong> Project Design, Data Cleaning, Statistical/Machine Learning, Manuscript/Final Report Development"
+      "<strong>Contributions:</strong> Project Design, Data Sourcing/Identification, Data Cleaning, Hypothesis Testing, Regression Modeling, Data Analysis, Manuscript/Final Report."
     ),
     "Add a short bio here (background, interests, role on the project).",
-    "Add a short bio here (background, interests, role on the project).",
+    paste0(
+  "<strong>Preferred Name:</strong> Eman Ibrahim (she/her)<br>",
+  "<strong>Program:</strong> MPH in Epidemiology<br>",
+  "<strong>Certificate:</strong> Public Health & Humanitarian Action<br>",
+  "<strong>From:</strong> Lumiose City, Kalos<br>",
+  "<strong>Starter Pokémon:</strong> Froakie<br><br>",
+  
+  "<strong>Background:</strong> Eman grew up surrounded by diverse Pokémon habitats, where she became fascinated not only by patterns in strength and evolution, but also by the stories behind why certain Pokémon thrive in difficult environments. She has always approached problems with a blend of intuition and curiosity—asking deeper questions about why differences exist rather than just observing them. As she moved into epidemiology and humanitarian work, this instinctive way of seeing the world evolved into a love for research, data interpretation, and understanding populations through both numbers and narratives.<br><br>",
+  
+  "<strong>Training Style:</strong> Eman’s training style balances analysis with instinct. She relies on data, visual patterns, and statistical reasoning, but also trusts her ability to read context, notice subtle details, and draw meaning from the “story” behind the numbers. Whether in Pokémon battles or in research, she pairs evidence with intuition—making decisions that are both thoughtful and adaptive.<br><br>",
+  
+  "<strong>Overall Goal:</strong> Eman hopes to become a Pokémon population researcher who studies how environment, rarity, and external pressures shape strength and development. She aims to explore how different regions create different Pokémon outcomes, combining scientific analysis with real-world storytelling to understand the full picture.<br><br>",
+  
+  "<strong>Contributions:</strong> Data Cleaning/Peprocessing, Exploratory Data Analysis/Visualization, Hypothesis Testing, Regression Modeling, Data Interpretation, Manuscript/Final Report."),
     "Add a short bio here (background, interests, role on the project)."
   ),
   stringsAsFactors = FALSE
