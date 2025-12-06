@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)  # important: no results='asis'
 
 ```{r trainers}
 trainers <- data.frame(
-  name   = c("Sergio Ozoria Ramírez (he/him)", "Maria Beg", "Eman Ibrahim", "Spencer Riddell"),
+  name   = c("Sergio Ozoria Ramírez (smo2147)", "Maria Beg", "Eman Ibrahim", "Spencer Riddell"),
   github = c("sergozoria",               "mb5357",    "ei2291",       "swr2118"),
   avatar = c(
     "https://github.com/sergozoria.png?size=360",
@@ -20,7 +20,7 @@ trainers <- data.frame(
   ),
   bio = c(
     paste0(
-      "<strong>Preferred Name:</strong> Serg<br>",
+      "<strong>Preferred Name:</strong> Serg (he/him)<br>",
       "<strong>Program:</strong> MPH in Population and Family Health<br>",
       "<strong>Certificate:</strong> Public Health Research Methods<br>",
       "<strong>From:</strong> Pastoria City, Sinnoh<br>",
