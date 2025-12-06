@@ -383,47 +383,61 @@ govern Pokémon strength?”</p>
 <div id="research-questions" class="section level2">
 <h2>Research Questions</h2>
 <p>Our project addresses three distinct research questions, each
-requiring different statistical approaches: <strong>Research Question 1:
-Type Classification from Stats</strong></p>
-<p><em>Question:</em> Can we predict a Pokémon’s primary type based
-solely on its base stat distribution?</p>
+requiring different statistical approaches:</p>
+<p><strong>Research Question 1 (Type Classification from
+Stats):</strong></p>
+<ul>
+<li>Can we predict a Pokémon’s primary type based solely on its base
+stat distribution?</li>
+</ul>
 <p><em>Hypotheses:</em></p>
-<p>H₀: Pokémon stat distributions do not differ significantly across
+<ul>
+<li>H₀: Pokémon stat distributions do not differ significantly across
 primary types; we cannot predict type from stats better than random
-chance H₁: Pokémon stat distributions vary systematically by primary
-type (e.g., Fire types have higher Attack, Psychic types have higher
-Special Attack)</p>
+chance</li>
+<li>H₁: Pokémon stat distributions vary systematically by primary type
+(e.g., Fire types have higher Attack, Psychic types have higher Special
+Attack)</li>
+</ul>
 <p><em>Motivation:</em> If types have distinctive stat signatures, this
 reveals fundamental design principles in the Pokémon universe and helps
 players identify type weaknesses based on stat patterns. This question
 evolved from initial exploratory boxplots showing type differences—we
 formalized it into a classification problem to quantify
 predictability.</p>
-<p><strong>Research Question 2: Dual-Type Advantage</strong></p>
-<p><em>Question:</em> Do dual-type Pokémon have higher total base stats
-than single-type Pokémon?</p>
+<p><strong>Research Question 2 (Dual-Type Advantage):</strong></p>
+<ul>
+<li>Do dual-type Pokémon have higher total base stats than single-type
+Pokémon?</li>
+</ul>
 <p><em>Hypotheses:</em></p>
-<p>H₀: There is no difference in mean <code>base_total</code> between
-single-type and dual-type Pokémon (μ_single = μ_dual) H₁: There is a
-difference in mean <code>base_total</code> between single-type and
-dual-type Pokémon (μ_single ≠ μ_dual)</p>
+<ul>
+<li>H₀: There is no difference in mean <code>base_total</code> between
+single-type and dual-type Pokémon (μ_single = μ_dual)</li>
+<li>H₁: There is a difference in mean <code>base_total</code> between
+single-type and dual-type Pokémon (μ_single ≠ μ_dual)</li>
+</ul>
 <p><em>Motivation:</em> Dual typing provides strategic advantages (more
 resistances, more STAB move coverage), but does this come with a stat
 penalty for game balance? Or do dual-types receive stat boosts to
 compensate for added complexity? This question emerged after observing
 apparent distribution shifts in exploratory density plots.</p>
-<p><strong>Research Question 3: Capture Rate and Combat
-Effectiveness</strong></p>
-<p><em>Question:</em> Is there a relationship between how difficult a
-Pokémon is to catch (capture rate) and its overall combat strength (base
-stats)?</p>
+<p><strong>Research Question 3 (Capture Rate and Combat
+Effectiveness):</strong></p>
+<ul>
+<li>Is there a relationship between how difficult a Pokémon is to catch
+(capture rate) and its overall combat strength (base stats)?</li>
+</ul>
 <p><em>Hypotheses:</em></p>
-<p>H₀: There is no linear relationship between <code>capture_rate</code>
-and <code>base_total</code> in non-legendary Pokémon, after controlling
-for physical characteristics and generation H₁: There is a significant
-negative relationship between `<code>capture_rate</code> and
-<code>base_total</code> (harder-to-catch Pokémon tend to be stronger),
-after controlling for covariates</p>
+<ul>
+<li>H₀: There is no linear relationship between
+<code>capture_rate</code> and <code>base_total</code> in non-legendary
+Pokémon, after controlling for physical characteristics and
+generation</li>
+<li>H₁: There is a significant negative relationship between
+`<code>capture_rate</code> and <code>base_total</code> (harder-to-catch
+Pokémon tend to be stronger), after controlling for covariates</li>
+</ul>
 <p><em>Motivation:</em> Players intuitively assume rare Pokémon are
 stronger, but this had never been tested with proper controls for
 confounding variables like physical size (which might affect both
@@ -433,24 +447,24 @@ multiple regression after recognizing potential confounders.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>We used the <strong>Complete Pokémon Dataset</strong> from Kaggle (<a
-href="https://www.kaggle.com/datasets/rounakbanik/pokemon"
-class="uri">https://www.kaggle.com/datasets/rounakbanik/pokemon</a>),
-containing comprehensive information on <strong>802 Pokémon</strong>
+<p>We used the <strong>Complete Pokémon Dataset</strong> from <strong><a
+href="https://www.kaggle.com/datasets/rounakbanik/pokemon">Kaggle</a></strong>,
+containing comprehensive information on <strong>801 Pokémon</strong>
 from Generations 1-7. This dataset includes 41 variables covering base
 stats, types, physical characteristics, battle mechanics, and
 metadata.</p>
 <p><strong>Key variables used:</strong></p>
 <ul>
-<li>Combat stats: <code>hp</code>, <code>attack</code>,
+<li><em>Combat stats:</em> <code>hp</code>, <code>attack</code>,
 <code>defense</code>, <code>sp_attack</code>, <code>sp_defense</code>,
 <code>speed</code>, <code>base_total</code> (sum of six base stats)</li>
-<li>Type information: <code>type1</code> (primary type, 18 categories),
-<code>type2</code> (secondary type or “None”)</li>
-<li>Physical traits: <code>height_m</code>, <code>weight_kg</code></li>
-<li>Rarity &amp; metadata: <code>capture_rate</code> (3-255; higher =
-easier), <code>generation</code> (1-7), <code>is_legendary</code>,
-<code>percentage_male</code></li>
+<li><em>Type information:</em> <code>type1</code> (primary type, 18
+categories), <code>type2</code> (secondary type or “None”)</li>
+<li><em>Physical traits:</em> <code>height_m</code>,
+<code>weight_kg</code></li>
+<li><em>Rarity &amp; metadata:</em> <code>capture_rate</code> (3-255;
+higher = easier), <code>generation</code> (1-7),
+<code>is_legendary</code>, <code>percentage_male</code></li>
 </ul>
 <p><strong>Data Cleaning Process</strong></p>
 <p><em>Step 1: Variable Standardization</em> - Converted all variable
@@ -523,10 +537,11 @@ classification (Random Forest), parametric hypothesis testing
 conducted in R using <code>tidyverse</code>, <code>randomForest</code>,
 <code>caret</code> and <code>gtsummary</code> packages.</p>
 <p><strong>Research Question 1: Type Prediction (Random Forest
-Classification)</strong> <em>Rationale:</em> With 18 type categories and
-potential non-linear relationships between stats and types, Random
-Forest is ideal for multi-class classification while providing
-interpretable feature importance metrics.</p>
+Classification)</strong></p>
+<p><em>Rationale:</em> With 18 type categories and potential non-linear
+relationships between stats and types, Random Forest is ideal for
+multi-class classification while providing interpretable feature
+importance metrics.</p>
 <p><em>Sample:</em> All Pokémon with complete data on the six base stats
 and primary type were eligible; an 80/20 stratified split ensured
 similar type distributions in training and test sets.</p>
@@ -552,9 +567,10 @@ confusion matrix, used to identify which types are easiest or hardest to
 predict.</li>
 </ul>
 <p><strong>Research Question 2: Dual-Type Advantage (Two-Sample
-t-test)</strong> <em>Rationale:</em> Comparing mean total stats between
-two independent groups (single-type vs. dual-type) with a continuous
-outcome is a standard application of the two-sample t-test</p>
+t-test)</strong></p>
+<p><em>Rationale:</em> Comparing mean total stats between two
+independent groups (single-type vs. dual-type) with a continuous outcome
+is a standard application of the two-sample t-test</p>
 <p><em>Sample:</em> All Pokémon with non-missing <code>base_total</code>
 and type information. Group sizes correspond to the counts of species
 with and without a secondary type (<code>type2</code> equal to
@@ -579,10 +595,10 @@ dual-type and single-type Pokémon, with a 95% confidence interval to
 quantify magnitude and uncertainty.</li>
 </ul>
 <p><strong>Research Question 3: Capture Rate Regression (Multiple Linear
-Regression)</strong> <em>Rationale:</em> Multiple linear regression
-allows assessment of the association between capture rate and total base
-stats while controlling for covariates that may confound this
-relationship.</p>
+Regression)</strong></p>
+<p><em>Rationale:</em> Multiple linear regression allows assessment of
+the association between capture rate and total base stats while
+controlling for covariates that may confound this relationship.</p>
 <p><em>Sample:</em> Non-legendary Pokémon with complete data on
 <code>capture_rate</code>, <code>base_total</code>,
 <code>height_m</code>, <code>weight_kg</code>,
@@ -659,7 +675,7 @@ trends.</p></li>
 </ul>
 </div>
 <div id="results-summary" class="section level2">
-<h2>Results (summary)</h2>
+<h2>Results (Summary)</h2>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>

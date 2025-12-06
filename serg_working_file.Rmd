@@ -494,16 +494,99 @@ Overall, although both groups do include strong and weak species, having two typ
 
 ## 1. Motivation
 
-As lifelong Pokémon players, 
+As lifelong Pokémon players, our team has always been curious about the fundamental questions that drive competitive gameplay: What makes a Pokémon strong? How do physical characteristics like height and weight relate to combat performance? Which Pokémon types dominate key stats such as HP, Attack, and Speed? Do dual-type Pokémon 
+have inherent advantages over single-type species?
 
-## 2. Initial questions:
+These questions emerged from years of gameplay experience—battling friends, competing online, and building teams without fully understanding the statistical patterns underlying the Pokémon universe. While players often rely on intuition and trial-and-error, we recognized an opportunity to use data science to uncover the hidden structure behind Pokémon design.
+
+Our primary goal is to explore relationships between Pokémon characteristics (type, stats, physical traits, rarity) and combat effectiveness using rigorous statistical methods. Beyond satisfying our curiosity, this project aims to provide actionable insights that can enhance team-building strategies for both casual players and competitive trainers. By analyzing 802 Pokémon across seven generations, we seek to answer: Can data reveal the "rules" that govern Pokémon strength?
+
+## 2. Initial Questions
+
+Our project began with broad curiosity about Pokémon strength and evolved into three focused research questions as we explored the data:
+
+### 2.1 Original Questions (Project Proposal Stage)
+
+**Initial Broad Questions:**
+- What makes a Pokémon "strong"?
+- How do type, height, weight, and generation relate to combat stats?
+- Can we predict legendary status from observable characteristics?
+- Which Pokémon types dominate specific stat categories?
+
+These questions reflected our initial exploratory mindset. However, after preliminary data exploration (see Section 3.2), we realized some questions were too broad or already well-established (e.g., legendary Pokémon are obviously stronger).
+
+### 2.2 Refined Research Questions (Final Analysis)
+
+Through iterative exploration and team discussion, we refined our focus to three distinct, testable questions:
+
+**Research Question 1: Type Prediction from Stats**
+- *Can we predict a Pokémon's primary type based solely on its stat distribution?*
+- **Motivation:** If types have distinctive stat profiles, this would reveal underlying design principles in the Pokémon universe and help players identify type weaknesses based on stat patterns.
+- **Evolution:** Initially, we considered comparing types descriptively. After seeing overlap in boxplots, we shifted to a classification problem to quantify how well stats distinguish between types.
+
+**Research Question 2: Dual-Type Advantage**
+- *Do dual-type Pokémon have higher total stats than single-type Pokémon?*
+- **Motivation:** Dual typing provides strategic advantages (more resistances, STAB coverage), but does this come with a stat penalty for game balance? Or do dual-types receive stat boosts?
+- **Evolution:** This question emerged from exploratory visualizations showing apparent differences in stat distributions. We formalized it into a hypothesis test to determine statistical significance.
+
+**Research Question 3: Capture Rate and Combat Effectiveness**
+- *Is there a relationship between how hard a Pokémon is to catch and its combat strength?*
+- **Motivation:** Players intuitively assume rare Pokémon are stronger, but this had never been tested with controls for confounding variables like size and generation.
+- **Evolution:** We initially planned a simple correlation, but refined this to multiple regression after recognizing that physical characteristics and generation could bias the relationship.
+
+### 2.3 Questions We Considered But Did Not Pursue
+
+- **Legendary prediction:** After preliminary logistic regression, we found this relationship too obvious (legendary status is strongly determined by total stats). We pivoted to more nuanced questions.
+- **Type effectiveness matrices:** While interesting, this was purely descriptive and already well-documented in existing databases.
+- **Optimal team composition:** Too complex for the project scope; would require simulation of battle mechanics beyond our dataset.
+
+### 2.4 How Questions Evolved During Analysis
+
+1. **Type Prediction:** After achieving 23.2% accuracy (vs. 5.6% baseline), we added type-specific accuracy analysis to understand *which* types are most predictable—this deepened our interpretation beyond overall model performance.
+
+2. **Dual-Type Analysis:** We initially planned only a t-test, but added violin plots and effect size interpretation after realizing the practical significance of a 36-point stat difference for gameplay.
+
+3. **Capture Rate:** We expanded covariates from just generation to include height, weight, and sex ratio after recognizing these as potential confounders that could inflate the capture rate effect.
+
+All three questions share a common thread: **understanding the statistical structure underlying Pokémon design to inform strategic gameplay decisions.**
 
 ## 3. Data:
 
 ### 3.1. Data source
 
-Our data source came from []
+We used the **Complete Pokémon Dataset** from Kaggle (https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains comprehensive information on **802 Pokémon** from all seven generations (as of the dataset creation date). This dataset was selected because:
 
-### 3.2. Data cleaning rocess
+- **Completeness:** Includes all Pokémon from Generations 1-7 with no missing entries
+- **Rich variables:** Contains 41 features including base stats, types, physical characteristics, battle mechanics, and metadata
+- **Public availability:** Enables reproducibility and comparison with other analyses
+- **Data quality:** Well-maintained with clear variable definitions and minimal errors
+
+**Key variables used in our analyses:**
+
+*Combat Stats (continuous):*
+- `hp`, `attack`, `defense`, `sp_attack`, `sp_defense`, `speed`: Individual base stats
+- `base_total`: Sum of all six base stats (our primary outcome measure)
+
+*Type Information (categorical):*
+- `type1`: Primary type (18 categories: Normal, Fire, Water, Grass, etc.)
+- `type2`: Secondary type (same categories plus "None" for single-type Pokémon)
+
+*Physical Characteristics (continuous):*
+- `height_m`: Height in meters
+- `weight_kg`: Weight in kilograms
+
+*Rarity & Metadata:*
+- `capture_rate`: Difficulty of catching (higher = easier; range: 3-255)
+- `generation`: Generation introduced (1-7)
+- `is_legendary`: Boolean indicator of legendary status
+- `percentage_male`: Proportion of species that are male (0-100)
+
+*Battle Mechanics:*
+- `against_*`: 18 variables indicating damage multipliers against each type
+
+
+### 3.2. Data cleaning process
+
+
 
 ### 3.3. Final dataset
