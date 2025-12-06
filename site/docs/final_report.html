@@ -13,7 +13,7 @@
 
 <title>Final Report</title>
 
-<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -676,6 +676,42 @@ trends.</p></li>
 </div>
 <div id="results-summary" class="section level2">
 <h2>Results (Summary)</h2>
+<p><strong>Research Question 1: Predicting Pokemon Types from Base
+Stats</strong></p>
+<p>The Random Forest model reached 23.2% accuracy, which is much higher
+than the 5.6% baseline expected from randomly guessing among 18 possible
+types. This means that Pokemon base stats do contain real information
+about type, even though type alone cannot be predicted with very high
+precision.</p>
+<p>The most important predictors were Special Attach, Attack, and Speed,
+which suggests that offensive stats vary more consistently across types
+than defensive stats. Some type, such as Normal, Fighting, and Fire,
+were predicted with the highest accuracy (40-62%), while types with
+small sample sizes or overlapping stat patterns (such as Ghost, Ice,
+Fairy, Poison, Ground) had 0% accuracy.</p>
+<p>The results show that there are differences in types in stat
+distributions, but the overlap across types makes it impossible to make
+perfect prediction. Overall, the model performed significantly better
+than chance, which leads us to reject the null hypothesis and conclude
+that Pokemon types do differ systematically in their stat patterns.</p>
+<p><strong>Research Question 2: Do Dual-Type Pokemon Have Higher Total
+Base Stats?</strong></p>
+<p>The Welch two-sample t-test showed that dual-type Pokemon have
+significantly higher total base stats than single-type Pokemon.</p>
+<ul>
+<li>Mean (Dual-type): 445.9</li>
+<li>Mean (Single-type): 409.4</li>
+<li>Mean difference: 36.5</li>
+<li>t = 4.39, p = 1.30 x 10^-5</li>
+<li>95% CI: 20.2 to 52.9</li>
+</ul>
+<p>Because the confidence interval does not include zero and the p-value
+is far below 0.05, we reject the null hypothesis. This means dual-type
+Pokemon tend to be stronger on average when looking at total base
+stats.</p>
+<p>The violin and boxplots support this conclusion visually: dual-type
+Pokemon show higher median and a larger cluster of high-stat species,
+even though both groups have wide variatioin.</p>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
